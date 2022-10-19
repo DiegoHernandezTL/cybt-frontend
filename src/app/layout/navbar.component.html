@@ -1,0 +1,22 @@
+<nav class="cybt-navbar">
+  <div class="cybt-navbar-header">
+    Bienvenido <b>{{usuario.nombre}}</b>, haz iniciado sesión como <b>{{usuario.rol}}</b>
+  </div>
+  <div class="cybt-navbar-content">
+    <a class="cybt-navbar-brand" routerLink="/">
+      <img [src]="logo" alt="logo cybertronica">
+    </a>
+    <div class="cybt-navbar-options">
+      <div class="--option"  *ngFor="let option of menuList">
+        <a  routerLink="{{option.path}}" *ngIf="option.access.includes(usuario.rol) || option.access.includes('everyone')">
+          {{option.nombre}}
+        </a>
+      </div>
+
+    </div>
+    <button class="cybt-logout-btn" (click)="reloadContent()">
+      Cerrar sesión
+      <i class="fa-solid fa-right-from-bracket fa-2xl"></i>
+    </button>
+  </div>
+</nav>

@@ -1,0 +1,147 @@
+
+
+<div class="container mt-4">
+  <div class="cybt-box">
+    <div class="cybt-box-wrapper">
+      <button class="cybt-close-btn" routerLink="/informe/">
+        <i class="fa-solid fa-circle-xmark fa-2xl"></i>
+      </button>
+      <form class="cybt-box-content" (ngSubmit)="onCreate()" novalidate #f="ngForm">
+        <div class="cybt-box-content-section --service">
+          <p class="--section-title"><b>DATOS DEL SERVICIO</b></p>
+          <div class="--text-1-line --type">
+            <label for="tipoServicio" class="--info-title">Tipo de servicio</label>
+            <input class="--info-description" type="text" class="form-contol" id="tipoServicio" name="tipoServicio" [(ngModel)]="tipo" required>
+          </div>
+          <div class="--text-1-line --type">
+            <label for="equipoTipo" class="--info-title">Tipo de equipo</label>
+            <input class="--info-description" type="text" class="form-contol" id="equipoTipo" name="equipoTipo" [(ngModel)]="equipoTipo" required>
+          </div>
+          <div class="--text-1-line --type">
+            <label for="fechaRetiro" class="--info-title">Fecha de retiro</label>
+            <input class="--info-description" type="text" class="form-contol" id="fechaRetiro" name="fechaRetiro" [(ngModel)]="fechaRetiro" required>
+          </div>
+        </div>
+        <div class="cybt-box-content-section --client">
+          <p class="--section-title"><b>DATOS DEL CLIENTE</b></p>
+          <div class="--text-1-line --type">
+            <label for="cliente" class="--info-title">Cliente</label>
+            <input class="--info-description" type="text" class="form-contol" id="cliente" name="cliente" [(ngModel)]="cliente" required>
+          </div>
+          <div class="--text-1-line --type">
+            <label for="usuario" class="--info-title">Usuario</label>
+            <input class="--info-description" type="text" class="form-contol" id="usuario" name="usuario" [(ngModel)]="usuario" required>
+          </div>
+          <div class="--text-1-line --type">
+            <label for="usuarioCargo" class="--info-title">Cargo</label>
+            <input class="--info-description" type="text" class="form-contol" id="usuarioCargo" name="usuarioCargo" [(ngModel)]="usuarioCargo" required>
+          </div>
+          <div class="--text-1-line --type">
+            <label for="dependencia" class="--info-title">Dependencia</label>
+            <input class="--info-description" type="text" class="form-contol" id="dependencia" name="dependencia" [(ngModel)]="dependencia" required>
+          </div>
+        </div>
+        <div class="cybt-box-content-section --printer-details" *ngIf="equipoTipo != ''">
+          <p class="--section-title"><b>DATOS DE {{equipoTipo.toUpperCase()}}</b></p>
+          <div class="--text-1-line --type">
+            <label for="equipoMarca" class="--info-title">Marca</label>
+            <input class="--info-description" type="text" class="form-contol" id="equipoMarca" name="equipoMarca" [(ngModel)]="equipoMarca">
+          </div>
+          <div class="--text-1-line --type">
+            <label for="equipoNombre" class="--info-title">Modelo / Referencia</label>
+            <input class="--info-description" type="text" class="form-contol" id="equipoNombre" name="equipoNombre" [(ngModel)]="equipoNombre">
+          </div>
+          <div class="--text-1-line --type">
+            <label for="equipoSerial" class="--info-title">Serial</label>
+            <input class="--info-description" type="text" class="form-contol" id="equipoSerial" name="equipoSerial" [(ngModel)]="equipoSN">
+          </div>
+          <div class="--text-1-line --type">
+            <label for="direccionIP" class="--info-title">Dirección IP</label>
+            <input class="--info-description" type="text" class="form-contol" id="direccionIP" name="direccionIP" [(ngModel)]="direccionIP">
+          </div>
+          <div class="--text-1-line --type" *ngIf="equipoTipo == 'Impresora'">
+            <label for="contadorHojas" class="--info-title">Contador de hojas</label>
+            <input class="--info-description" type="number" class="form-contol" id="contadorHojas" name="contadorHojas" [(ngModel)]="contadorHojas">
+          </div>
+        </div>
+
+        <div class="cybt-box-content-section --computer-details" *ngIf="equipoTipo == 'Computador'">
+          <p class="--section-title"><b>DATOS DE MONITOR</b></p>
+          <div class="--text-1-line --type">
+            <label for="monitorMarca" class="--info-title">Marca</label>
+            <input class="--info-description" type="text" class="form-contol" id="monitorMarca" name="monitorMarca" [(ngModel)]="monitorMarca">
+          </div>
+          <div class="--text-1-line --type">
+            <label for="monitorNombre" class="--info-title">Modelo / Referencia</label>
+            <input class="--info-description" type="text" class="form-contol" id="monitorNombre" name="monitorNombre" [(ngModel)]="monitorNombre">
+          </div>
+          <div class="--text-1-line --type">
+            <label for="monitorSerial" class="--info-title">Serial</label>
+            <input class="--info-description" type="text" class="form-contol" id="monitorSerial" name="monitorSerial" [(ngModel)]="monitorSN">
+          </div>
+        </div>
+        <div class="cybt-box-content-section --computer-details" *ngIf="equipoTipo == 'Computador'">
+          <p class="--section-title"><b>DATOS DE TECLADO</b></p>
+          <div class="--text-1-line --type">
+            <label for="tecladoMarca" class="--info-title">Marca</label>
+            <input class="--info-description" type="text" class="form-contol" id="tecladoMarca" name="tecladoMarca" [(ngModel)]="tecladoMarca">
+          </div>
+          <div class="--text-1-line --type">
+            <label for="tecladoNombre" class="--info-title">Modelo / Referencia</label>
+            <input class="--info-description" type="text" class="form-contol" id="tecladoNombre" name="tecladoNombre" [(ngModel)]="tecladoNombre">
+          </div>
+          <div class="--text-1-line --type">
+            <label for="tecladoSerial" class="--info-title">Serial</label>
+            <input class="--info-description" type="text" class="form-contol" id="tecladoSerial" name="tecladoSerial" [(ngModel)]="tecladoSN">
+          </div>
+        </div>
+        <div class="cybt-box-content-section --computer-details" *ngIf="equipoTipo == 'Computador'">
+          <p class="--section-title"><b>DATOS DE MOUSE</b></p>
+          <div class="--text-1-line --type">
+            <label for="mouseMarca" class="--info-title">Marca</label>
+            <input class="--info-description" type="text" class="form-contol" id="mouseMarca" name="mouseMarca" [(ngModel)]="mouseMarca">
+          </div>
+          <div class="--text-1-line --type">
+            <label for="mouseNombre" class="--info-title">Modelo / Referencia</label>
+            <input class="--info-description" type="text" class="form-contol" id="mouseNombre" name="mouseNombre" [(ngModel)]="mouseNombre">
+          </div>
+          <div class="--text-1-line --type">
+            <label for="mouseSerial" class="--info-title">Serial</label>
+            <input class="--info-description" type="text" class="form-contol" id="mouseSerial" name="mouseSerial" [(ngModel)]="mouseSN">
+          </div>
+        </div>
+
+
+        <div class="cybt-box-content-section --activity">
+          <p class="--section-title"><b>DETALLES DE SERVICIO</b></p>
+          <div class="--text-multiples-lines --type">
+            <label for="actividades" class="--info-title">Actividades realizadas</label>
+            <textarea class="--info-description" type="text" class="form-contol" id="actividades" name="actividades" [(ngModel)]="servicioDetalle"></textarea>
+          </div>
+          <div class="--text-multiples-lines --type">
+            <label for="observaciones" class="--info-title">Observaciones</label>
+            <textarea class="--info-description" type="text" class="form-contol" id="observaciones" name="observaciones" [(ngModel)]="observaciones"></textarea>
+          </div>
+        </div>
+        <div class="cybt-box-content-section --delivery">
+          <p class="--section-title"><b>DETALLES DE ENTREGA</b></p>
+          <div class="--text-1-line --type">
+            <label for="fechaEntrega" class="--info-title">Fecha de entrega</label>
+            <input class="--info-description" type="text" class="form-contol" id="fechaEntrega" name="fechaEntrega" [(ngModel)]="fechaRecibe">
+          </div>
+          <div class="--text-1-line --type">
+            <label for="recibe" class="--info-title">Entregado a</label>
+            <input class="--info-description" type="text" class="form-contol" id="recibe" name="recibe" [(ngModel)]="recibe">
+          </div>
+          <div class="--text-1-line --type">
+            <label for="recibeCargo" class="--info-title">Cargo</label>
+            <input class="--info-description" type="text" class="form-contol" id="recibeCargo" name="recibeCargo" [(ngModel)]="recibeCargo">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-outline-success" [disabled]="!f.valid">
+          Generar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

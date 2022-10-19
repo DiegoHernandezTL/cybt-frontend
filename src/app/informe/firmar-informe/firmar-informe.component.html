@@ -1,0 +1,25 @@
+<div class="cybt-box">
+  <div class="cybt-box-wrapper">
+    <form class="cybt-box-content" (ngSubmit)="onSign()" novalidate #f="ngForm">
+      <div class="cybt-box-content-section --signs">
+        <p class="--section-title"><b>FIRMA</b></p>
+        <div class="--signs-section">
+          <div class="--sign-box">
+            <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+          </div>
+        </div>
+      </div>
+      <div class="--buttons">
+        <button type="submit" class="btn btn-outline-success" [disabled]="!f.valid">
+          <i class="fa-solid fa-signature"></i> Firmar
+        </button>
+        <button type="button" class="btn btn-outline-primary" (click)="clearPad()">
+          <i class="fa-solid fa-eraser"></i> Borrar
+        </button>
+        <button type="button" class="btn btn-outline-danger" routerLink="/informe/{{informe.id}}">
+          <i class="fa-solid fa-ban"></i> Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

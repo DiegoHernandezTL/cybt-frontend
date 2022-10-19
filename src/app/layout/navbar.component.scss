@@ -1,0 +1,85 @@
+.cybt-navbar {
+  float: top;
+  height: 6.5em;
+  width: 100%;
+  border-bottom: 1px solid green;
+  background-color: white;
+  filter: drop-shadow(3px 1px 10px rgb(0, 128, 0, .3));
+
+  .cybt-navbar-header {
+    background-color: midnightblue;
+    padding-block: .1em;
+    text-align: center;
+    color: white;
+  }
+
+  .cybt-navbar-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 20%;
+    height: 4.5em;
+
+    .cybt-navbar-brand {
+      height: 3em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        height: 4em;
+        filter: drop-shadow(3px 1px 3px rgb(0, 0, 0, .1));
+      }
+    }
+
+    .cybt-navbar-options {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      padding-inline: 6em;
+
+      a {
+        border: 1px solid green;
+        border-radius: 1em;
+        padding: .5em 1em;
+        margin-right: 1em;
+        text-decoration: none;
+        color: darkgreen;
+        background-color: white ;
+        font-weight: bold;
+        filter: drop-shadow(3px 1px 3px rgb(0, 0, 0, .2));
+
+        &:hover {
+          background-color: darkgreen;
+          color: white;
+        }
+
+      }
+
+    }
+
+    .cybt-logout-btn {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: 14em;
+
+
+      border: none;
+      color: darkgreen;
+      background-color: white;
+      font-weight: bold;
+
+      svg {
+        margin-left: .5em;
+      }
+
+    }
+
+  }
+
+}

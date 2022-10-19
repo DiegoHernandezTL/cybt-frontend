@@ -1,0 +1,202 @@
+
+<div class="container mt-4 cybt-container">
+  <div class="cybt-box">
+    <div class="cybt-box-wrapper">
+      <button class="cybt-close-btn" routerLink="/informe/">
+        <i class="fa-solid fa-circle-xmark fa-2xl"></i>
+      </button>
+      <div class="cybt-box-header">
+        <img [src]="logo" alt="" class="cybt-image">
+        <div class="cybt-box-header-info">
+          <div class="cybt-box-header-info-title">
+            <p><span class="--company"><b>CYBERTRONICA OE LIMITADA</b></span><br>Hoja de mantenimiento de Equipo</p>
+          </div>
+          <div class="cybt-box-header-info-subtitle">
+            <p class="--info-type"><b>INFORME TÉCNICO</b></p>
+            <div class="--details">
+              <p><b>CLIENTE</b></p>
+              <p>{{informeTecnico.cliente}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cybt-box-content">
+        <div class="cybt-box-content-section --service">
+          <p class="--section-title"><b>DATOS DEL SERVICIO</b></p>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Tipo de servicio</p>
+            <p class="--info-description">{{tipoServicio}}</p>
+          </div>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Tipo de equipo</p>
+            <p class="--info-description">{{informeTecnico.equipoTipo}}</p>
+          </div>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Fecha de retiro</p>
+            <p class="--info-description">{{retiroFecha}}</p>
+          </div>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Hora de retiro</p>
+            <p class="--info-description">{{retiroHora}}</p>
+          </div>
+        </div>
+        <div class="cybt-box-content-section --client">
+          <p class="--section-title"><b>DATOS DEL CLIENTE</b></p>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Usuario</p>
+            <p class="--info-description">{{informeTecnico.usuario}}</p>
+          </div>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Cargo</p>
+            <p class="--info-description">{{informeTecnico.usuarioCargo}}</p>
+          </div>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Dependencia</p>
+            <p class="--info-description">{{informeTecnico.dependencia}}</p>
+          </div>
+        </div>
+        <div class="cybt-box-content-section --printer-details" *ngIf="informeTecnico.equipoTipo == 'Impresora'">
+          <p class="--section-title"><b>DATOS DE IMPRESORA</b></p>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Marca</p>
+            <p class="--info-description">{{informeTecnico.equipoMarca}}</p>
+          </div>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Modelo / Referencia</p>
+            <p class="--info-description">{{informeTecnico.equipoNombre}}</p>
+          </div>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Número de serial</p>
+            <p class="--info-description">{{informeTecnico.equipoSN}}</p>
+          </div>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Contador de hojas</p>
+            <p class="--info-description">{{informeTecnico.contadorHojas}}</p>
+          </div>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Dirección IP</p>
+            <p class="--info-description">{{informeTecnico.direccionIP}}</p>
+          </div>
+        </div>
+
+
+        <div class="cybt-box-content-section --computer-details" *ngIf="informeTecnico.equipoTipo == 'Computador'">
+          <p class="--section-title"><b>DATOS DE COMPUTADOR</b></p>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Marca</p>
+            <p class="--info-description">{{informeTecnico.equipoMarca}}</p>
+          </div>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Modelo / Referencia</p>
+            <p class="--info-description">{{informeTecnico.equipoNombre}}</p>
+          </div>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Número de serial</p>
+            <p class="--info-description">{{informeTecnico.equipoSN}}</p>
+          </div>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Dirección IP</p>
+            <p class="--info-description">{{informeTecnico.direccionIP}}</p>
+          </div>
+        </div>
+        <div class="cybt-box-content-section --computer-details" *ngIf="informeTecnico.equipoTipo == 'Computador'">
+          <p class="--section-title"><b>DATOS DE MONITOR</b></p>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Marca</p>
+            <p class="--info-description">{{informeTecnico.monitorMarca}}</p>
+          </div>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Modelo / Referencia</p>
+            <p class="--info-description">{{informeTecnico.monitorNombre}}</p>
+          </div>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Número de serial</p>
+            <p class="--info-description">{{informeTecnico.monitorSN}}</p>
+          </div>
+        </div>
+        <div class="cybt-box-content-section --computer-details" *ngIf="informeTecnico.equipoTipo == 'Computador'">
+          <p class="--section-title"><b>DATOS DE TECLADO</b></p>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Marca</p>
+            <p class="--info-description">{{informeTecnico.tecladoMarca}}</p>
+          </div>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Modelo / Referencia</p>
+            <p class="--info-description">{{informeTecnico.tecladoNombre}}</p>
+          </div>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Número de serial</p>
+            <p class="--info-description">{{informeTecnico.tecladoSN}}</p>
+          </div>
+        </div>
+        <div class="cybt-box-content-section --computer-details" *ngIf="informeTecnico.equipoTipo == 'Computador'">
+          <p class="--section-title"><b>DATOS DE MOUSE</b></p>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Marca</p>
+            <p class="--info-description">{{informeTecnico.mouseMarca}}</p>
+          </div>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Modelo / Referencia</p>
+            <p class="--info-description">{{informeTecnico.mouseNombre}}</p>
+          </div>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Número de serial</p>
+            <p class="--info-description">{{informeTecnico.mouseSN}}</p>
+          </div>
+        </div>
+
+
+        <div class="cybt-box-content-section --activity" *ngIf="detallesActividad.length > 0">
+          <p class="--section-title"><b>DETALLES DE SERVICIO</b></p>
+          <div class="--text-multiples-lines --type">
+            <p class="--info-title">Actividades realizadas</p>
+            <p class="--info-description" *ngFor="let detalle of detallesActividad"><i class="fa-solid fa-check"></i> {{detalle}}</p>
+          </div>
+          <div class="--text-multiples-lines --type">
+            <p class="--info-title">Observaciones</p>
+            <p class="--info-description" *ngFor="let observacion of observaciones"><i class="fa-solid fa-check"></i> {{observacion}}</p>
+          </div>
+        </div>
+        <div class="cybt-box-content-section --delivery">
+          <p class="--section-title"><b>DETALLES DE ENTREGA</b></p>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Fecha de entrega</p>
+            <p class="--info-description">{{entregaFecha}}</p>
+          </div>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Hora de entrega</p>
+            <p class="--info-description">{{entregaHora}}</p>
+          </div>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Entregado a</p>
+            <p class="--info-description">{{informeTecnico.recibe}}</p>
+          </div>
+          <div class="--text-1-line --type">
+            <p class="--info-title">Cargo</p>
+            <p class="--info-description">{{informeTecnico.recibeCargo}}</p>
+          </div>
+        </div>
+        <div class="cybt-box-content-section --signs">
+          <button class="btn btn-outline-success --sign-button" routerLink="/informe/{{informeTecnico.id}}/firmar" *ngIf="informeTecnico.firmaRecibe.length < 5">
+            <i class="fa-solid fa-signature"></i> Firmar informe
+          </button>
+          <p class="--section-title" *ngIf="informeTecnico.firmaRecibe.length > 5"><b>FIRMAS</b></p>
+          <div class="--signs-section" *ngIf="informeTecnico.firmaRecibe.length > 5">
+            <div class="--sign-box">
+              <img class="--sign-img" [src]="informeTecnico.firmaRecibe" >
+              <p class="--sign-details">{{informeTecnico.recibe}}</p>
+              <p class="--sign-details">{{informeTecnico.recibeCargo}} de {{informeTecnico.cliente}}</p>
+            </div>
+            <div class="--sign-box">
+              <img class="--sign-img" [src]="firma" alt="">
+              <p class="--sign-details">Oscar Espitia</p>
+              <p class="--sign-details">Gerente de Cybertronica OE LTDA</p>
+            </div>
+          </div>
+        </div>
+        <div class="cybt-box-content-section --sign-button" >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

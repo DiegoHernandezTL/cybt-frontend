@@ -1,0 +1,89 @@
+
+<div class="cybt-container">
+  <div class="cybt-box">
+    <div class="cybt-box-title">
+      <p class="--main-title">
+        LISTADO DE INFORMES
+      </p>
+    </div>
+    <div class="cybt-box-subtitle">
+      <a routerLink="/crear/informe"><i class="fa-solid fa-circle-plus"></i> Nuevo</a>
+      <div class="--search">
+        <button class="cybt-icon-button" (click)="toggleSearch()" *ngIf="!isSearch">
+          <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+        </button>
+        <button class="cybt-icon-button" (click)="toggleSearch()" *ngIf="isSearch">
+          <i class="fa-solid fa-circle-xmark fa-xl"></i>
+        </button>
+        <form
+          class="--bsq-form"
+          (ngSubmit)="buscar()"
+          novalidate #bsq="ngForm"
+          *ngIf="isSearch"
+        >
+          <select class="--form-input" name="bsqColumna" id=bsqColumna [(ngModel)]="bsqColumna">
+            <option value="" selected disabled hidden>Categoría</option>
+            <option value="cliente">Cliente</option>
+            <option value="dependencia">Area</option>
+            <option value="direccionip">Direccion IP</option>
+            <option value="equipoMarca">Marca de equipo</option>
+            <option value="equipoSN">Serial de equipo</option>
+            <option value="equipoTipo">Tipo de equipo</option>
+            <option value="usuario">Usuario a cargo</option>
+            <option value="recibe">Persona que recibe</option>
+          </select>
+          <input class="--form-input" type="text" name="bsqValor" id="bsqValor" [(ngModel)]="bsqValor">
+          <button type="submit" class="cybt-icon-button"[disabled]="!bsq.valid">
+            <i class="fa-solid fa-magnifying-glass-arrow-right fa-lg"></i>
+          </button>
+        </form>
+
+      </div>
+    </div>
+    <div class="cybt-box-list">
+      <a class="--list-card" *ngFor="let informe of informesMostrando" routerLink="/informe/{{informe.id}}">
+        <div class="--card-icon-btn">
+          <button class="cybt-icon-btn" >
+            <i class="fa-solid fa-computer fa-xl" *ngIf="informe.equipoTipo === 'Computador'"></i>
+            <i class="fa-solid fa-print fa-xl" *ngIf="informe.equipoTipo === 'Impresora'"></i>
+          </button>
+        </div>
+        <div class="--card-info --text-div">
+          <p class="--info-title">
+            {{informe.equipoNombre}}
+          </p>
+          <p class="--info-subtitle">
+            {{informe.equipoSN}}
+          </p>
+        </div>
+        <div class="--card-area --text-div">
+          <p class="--info-title">
+            {{informe.cliente}}
+          </p>
+          <p class="--info-subtitle">
+            {{informe.dependencia}}
+          </p>
+        </div>
+        <div class="--card-client --text-div">
+          <p class="--info-title">
+            {{informe.recibe}}
+          </p>
+          <p class="--info-subtitle">
+            {{informe.recibeCargo}}
+          </p>
+        </div>
+        <div class="--card-verified" [class.--bg-green]="informe.firmaRecibe.length > 5">
+          <i class="fa-solid fa-circle-check fa-xl --icon-green" *ngIf="informe.firmaRecibe.length > 5"></i>
+          <i class="fa-solid fa-circle-xmark fa-xl --icon-red" *ngIf="informe.firmaRecibe.length <= 5"></i>
+        </div>
+
+      </a>
+    </div>
+  </div>
+</div>
+
+<ng-template #nocontent>
+  <div class="container mt-3">
+    <h1>No hay contenido en las listas de informes</h1>
+  </div>
+</ng-template>
