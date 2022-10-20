@@ -4,6 +4,21 @@ input, textarea {
   margin-left: 1em;
 }
 
+.cybt-btn {
+  padding: .5em 1em;
+  background-color: white;
+  border: 2px solid green;
+  border-radius: .5em;
+  color: green;
+  filter: drop-shadow(3px 1px 3px rgb(0, 0, 0, .2));
+  cursor: pointer;
+
+  &:hover {
+    background-color: green;
+    color: white;
+  }
+}
+
 .cybt-close-btn {
   position: relative;
   top: -1em;
@@ -19,6 +34,10 @@ input, textarea {
 
   svg {
     color: gray;
+
+    &:hover{
+      color: black;
+    }
   }
 
 }
@@ -226,7 +245,6 @@ input, textarea {
         }
 
         .--text-1-line {
-          filter: drop-shadow(3px 1px 3px rgb(0, 0, 0, .2));
           border: 1px solid #e1e1e1;
           background-color: #e5ffe5;
           border-radius: 1em;
@@ -234,6 +252,7 @@ input, textarea {
           flex-direction: row;
           justify-content: flex-start;
           margin-block: .3em;
+          filter: drop-shadow(3px 1px 3px rgb(0, 0, 0, .2));
 
           @media screen and (max-width: 510px) {
 
@@ -258,10 +277,33 @@ input, textarea {
             font-weight: bold;
           }
 
-          .--info-description {
+          .--info-description, select {
             margin: 0;
+            background-color: transparent;
+            border: none;
+            border-radius: 0 1em 1em 0;
+            width: 60%;
+            padding: .2em .5em .2em 1em;
+
+            &:focus {
+              outline: none;
+              border: 2px solid cornflowerblue;
+            }
+          }
+
+          .--info-description, input {
+            margin: 0;
+            background-color: transparent;
+            border: none;
+            border-radius: 0 1em 1em 0;
             width: 60%;
             padding: .2em 0 .2em 1em;
+
+            &:focus {
+              outline: none;
+              border: 2px solid cornflowerblue;
+            }
+
           }
 
         }

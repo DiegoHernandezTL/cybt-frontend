@@ -13,6 +13,8 @@ import {CookieService} from "ngx-cookie-service";
 export class DetalleUsuarioComponent implements OnInit {
 
   userLogged?: Usuario;
+  userRol: string;
+  userCanAccess: boolean;
 
   usuario: Usuario;
   sub: string;
@@ -27,8 +29,6 @@ export class DetalleUsuarioComponent implements OnInit {
 
   logo: string = 'assets/image/cybertronica.png'
   isEditing: boolean = false;
-  userRol: string;
-  userCanAccess: boolean;
 
   constructor(
     private usuarioService: UsuarioService,
@@ -51,11 +51,21 @@ export class DetalleUsuarioComponent implements OnInit {
         this.router.navigate(['/usuario']);
       }
     );
+    this.verifyUserAccess()
+  }
+
+  verifyUserAccess(): void {
     this.usuarioService.detalleSub(this.cookieService.get('user-sub')).subscribe(
       data => {
         this.userLogged = data;
         this.userRol = data.rol;
-        this.verifyUserAccess();
+        if(this.userLogged.rol == 'administrador' || this.userRol == 'desarrollador') {
+          this.userCanAccess = true;
+        } else if(this.userLogged.sub == this.usuario.sub) {
+          this.userCanAccess = true;
+        } else {
+          this.userCanAccess = false;
+        }
       },
       error => {
         this.userCanAccess = false;
@@ -64,16 +74,6 @@ export class DetalleUsuarioComponent implements OnInit {
         });
       }
     );
-  }
-
-  verifyUserAccess(): void {
-    if(this.userLogged.rol == 'administrador' || this.userRol == 'desarrollador') {
-      this.userCanAccess = true;
-    } else if(this.userLogged.sub == this.usuario.sub) {
-      this.userCanAccess = true;
-    } else {
-      this.userCanAccess = false;
-    }
   }
 
   toggleEdit(): void {

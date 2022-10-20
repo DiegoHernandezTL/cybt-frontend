@@ -3,6 +3,7 @@ import {Usuario} from "../../models/usuario";
 import {UsuarioService} from "../../service/usuario.service";
 import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-lista-usuario',
@@ -10,6 +11,10 @@ import {Router} from "@angular/router";
   styleUrls: ['./lista-usuario.component.scss']
 })
 export class ListaUsuarioComponent implements OnInit {
+
+  userLogged?: Usuario;
+  userRol: string;
+  userCanAccess: boolean = false;
 
   usuarios: Usuario[];
   usuariosMostrando: Usuario[] = [];
@@ -21,11 +26,33 @@ export class ListaUsuarioComponent implements OnInit {
   constructor(
     private usuarioService: UsuarioService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService
   ) { }
 
   ngOnInit(): void {
     this.cargarUsuarios();
+    this.verifyUserAccess();
+  }
+
+  verifyUserAccess(): void {
+    this.usuarioService.detalleSub(this.cookieService.get('user-sub')).subscribe(
+      data => {
+        this.userLogged = data;
+        this.userRol = data.rol;
+        if(this.userLogged.rol == 'administrador' || this.userRol == 'desarrollador') {
+          this.userCanAccess = true;
+        } else {
+          this.userCanAccess = false;
+        }
+      },
+      error => {
+        this.userCanAccess = false;
+        this.toastr.error(error.error.mensaje, 'Falló al cargar sesión', {
+          timeOut:3000, positionClass:'toast-top-center'
+        });
+      }
+    );
   }
 
   toggleSearch(): void {

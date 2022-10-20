@@ -8,7 +8,6 @@ import {HomepageComponent} from "./layout/homepage.component";
 import {FirmarInformeComponent} from "./informe/firmar-informe/firmar-informe.component";
 import {ListaUsuarioComponent} from "./usuario/lista-usuario/lista-usuario.component";
 import {DetalleUsuarioComponent} from "./usuario/detalle-usuario/detalle-usuario.component";
-import {EditarUsuarioComponent} from "./usuario/editar-usuario/editar-usuario.component";
 
 const routes: Routes = [
   {path:'', component: HomepageComponent},
@@ -19,7 +18,6 @@ const routes: Routes = [
   {path:'informe/:id/firmar', component: FirmarInformeComponent},
   {path:'usuario', component: ListaUsuarioComponent},
   {path:'usuario/:sub', component: DetalleUsuarioComponent},
-  {path:'usuario/:sub/editar', component: EditarUsuarioComponent},
   {path:'**', redirectTo: '', pathMatch:'full'}
 ];
 

@@ -21,7 +21,6 @@ import { HomepageComponent } from './layout/homepage.component';
 import { SignaturePadModule } from "angular2-signaturepad";
 import { FirmarInformeComponent } from './informe/firmar-informe/firmar-informe.component';
 import { DetalleUsuarioComponent } from './usuario/detalle-usuario/detalle-usuario.component';
-import { EditarUsuarioComponent } from './usuario/editar-usuario/editar-usuario.component';
 import { ListaUsuarioComponent } from './usuario/lista-usuario/lista-usuario.component';
 import {environment} from "../environments/environment";
 import {CookieService} from "ngx-cookie-service";
@@ -37,7 +36,6 @@ import {CookieService} from "ngx-cookie-service";
     HomepageComponent,
     FirmarInformeComponent,
     DetalleUsuarioComponent,
-    EditarUsuarioComponent,
     ListaUsuarioComponent
   ],
   imports: [

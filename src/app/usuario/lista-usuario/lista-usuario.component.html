@@ -1,6 +1,6 @@
 
 <div class="cybt-container">
-  <div class="cybt-box">
+  <div class="cybt-box" *ngIf="userCanAccess; else NoAccess">
     <div class="cybt-box-title">
       <p class="--main-title">
         LISTADO DE USUARIOS
@@ -79,6 +79,13 @@
       </a>
     </div>
   </div>
+
+  <ng-template #NoAccess>
+    <div class="cybt-box">
+        <p class="--section-title"><i class="fa-solid fa-triangle-exclamation fa-xl"></i>&nbsp;&nbsp;<b>No puedes acceder a este usuario.</b></p>
+    </div>
+  </ng-template>
+
 </div>
 
 <ng-template #nocontent>

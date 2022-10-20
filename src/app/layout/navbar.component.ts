@@ -45,6 +45,7 @@ export class NavbarComponent implements OnInit {
   }
 
   reloadContent() {
+    this.cookieService.delete('user-sub');
     this.cookieService.set('user-sub', 'default');
     window.location.reload();
   }

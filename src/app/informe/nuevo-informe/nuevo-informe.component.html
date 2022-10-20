@@ -11,11 +11,20 @@
           <p class="--section-title"><b>DATOS DEL SERVICIO</b></p>
           <div class="--text-1-line --type">
             <label for="tipoServicio" class="--info-title">Tipo de servicio</label>
-            <input class="--info-description" type="text" class="form-contol" id="tipoServicio" name="tipoServicio" [(ngModel)]="tipo" required>
+            <select class="--info-description" type="text" class="form-contol" id="tipoServicio" name="tipoServicio" [(ngModel)]="tipo" required>
+              <option value="0" selected hidden disabled>Seleccione tipo de mantenimiento</option>
+              <option value="1">Preventivo</option>
+              <option value="2">Correctivo</option>
+              <option value="3">Hardware</option>
+            </select>
           </div>
           <div class="--text-1-line --type">
             <label for="equipoTipo" class="--info-title">Tipo de equipo</label>
-            <input class="--info-description" type="text" class="form-contol" id="equipoTipo" name="equipoTipo" [(ngModel)]="equipoTipo" required>
+            <select class="--info-description" type="text" class="form-contol" id="equipoTipo" name="equipoTipo" [(ngModel)]="equipoTipo" required>
+              <option value="" selected hidden disabled>Seleccione tipo de equipo</option>
+              <option value="Computador">Computador</option>
+              <option value="Impresora">Impresora</option>
+            </select>
           </div>
           <div class="--text-1-line --type">
             <label for="fechaRetiro" class="--info-title">Fecha de retiro</label>
@@ -138,8 +147,8 @@
             <input class="--info-description" type="text" class="form-contol" id="recibeCargo" name="recibeCargo" [(ngModel)]="recibeCargo">
           </div>
         </div>
-        <button type="submit" class="btn btn-outline-success" [disabled]="!f.valid">
-          Generar
+        <button type="submit" class="cybt-btn" [disabled]="!f.valid">
+          <i class="fa-solid fa-circle-check"></i>&nbsp;&nbsp;Generar
         </button>
       </form>
     </div>
