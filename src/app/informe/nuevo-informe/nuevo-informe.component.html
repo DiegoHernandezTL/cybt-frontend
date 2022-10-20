@@ -28,7 +28,7 @@
           </div>
           <div class="--text-1-line --type">
             <label for="fechaRetiro" class="--info-title">Fecha de retiro</label>
-            <input class="--info-description" type="text" class="form-contol" id="fechaRetiro" name="fechaRetiro" [(ngModel)]="fechaRetiro" required>
+            <input class="--info-description" type="datetime-local" class="form-contol" id="fechaRetiro" name="fechaRetiro" [(ngModel)]="fechaRetiro" required>
           </div>
         </div>
         <div class="cybt-box-content-section --client">
@@ -124,19 +124,33 @@
         <div class="cybt-box-content-section --activity">
           <p class="--section-title"><b>DETALLES DE SERVICIO</b></p>
           <div class="--text-multiples-lines --type">
-            <label for="actividades" class="--info-title">Actividades realizadas</label>
-            <textarea class="--info-description" type="text" class="form-contol" id="actividades" name="actividades" [(ngModel)]="servicioDetalle"></textarea>
+            <p class="--info-title">Actividades realizadas</p>
+            <p class="--info-description" *ngFor="let detalle of servicioDetalleList"><i class="fa-solid fa-check"></i>&nbsp;&nbsp;{{detalle}}</p>
+            <div class="--info-description --input-section">
+              <input type="text" class="--info-description form-control" name="actividades" id="actividades" [(ngModel)]="servicioDetalleInput">
+              <button class="cybt-btn --add-btn" type="button" (click)="addDetalle()">
+                <i class="fa-solid fa-circle-check fa-lg"></i>
+              </button>
+            </div>
+<!--            <textarea class="&#45;&#45;info-description" type="text" class="form-contol" id="actividades" name="actividades" [(ngModel)]="servicioDetalleList"></textarea>-->
           </div>
           <div class="--text-multiples-lines --type">
-            <label for="observaciones" class="--info-title">Observaciones</label>
-            <textarea class="--info-description" type="text" class="form-contol" id="observaciones" name="observaciones" [(ngModel)]="observaciones"></textarea>
+            <p class="--info-title">Observaciones</p>
+            <p class="--info-description" *ngFor="let observacion of observacionesList"><i class="fa-solid fa-check"></i>&nbsp;&nbsp;{{observacion}}</p>
+            <div class="--info-description --input-section">
+              <input type="text" class="--info-description form-control" name="observaciones" id="observaciones" [(ngModel)]="observacionesInput">
+              <button class="cybt-btn --add-btn" type="button" (click)="addObservacion()">
+                <i class="fa-solid fa-circle-check fa-lg"></i>
+              </button>
+            </div>
+<!--            <textarea class="&#45;&#45;info-description" type="text" class="form-contol" id="observaciones" name="observaciones" [(ngModel)]="observacionesList"></textarea>-->
           </div>
         </div>
         <div class="cybt-box-content-section --delivery">
           <p class="--section-title"><b>DETALLES DE ENTREGA</b></p>
           <div class="--text-1-line --type">
             <label for="fechaEntrega" class="--info-title">Fecha de entrega</label>
-            <input class="--info-description" type="text" class="form-contol" id="fechaEntrega" name="fechaEntrega" [(ngModel)]="fechaRecibe">
+            <input class="--info-description" type="datetime-local" class="form-contol" id="fechaEntrega" name="fechaEntrega" [(ngModel)]="fechaRecibe">
           </div>
           <div class="--text-1-line --type">
             <label for="recibe" class="--info-title">Entregado a</label>
@@ -147,7 +161,7 @@
             <input class="--info-description" type="text" class="form-contol" id="recibeCargo" name="recibeCargo" [(ngModel)]="recibeCargo">
           </div>
         </div>
-        <button type="submit" class="cybt-btn" [disabled]="!f.valid">
+        <button type="submit" class="cybt-btn" >
           <i class="fa-solid fa-circle-check"></i>&nbsp;&nbsp;Generar
         </button>
       </form>

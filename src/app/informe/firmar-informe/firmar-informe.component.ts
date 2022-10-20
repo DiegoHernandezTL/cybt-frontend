@@ -63,11 +63,11 @@ export class FirmarInformeComponent implements OnInit, AfterViewInit {
     // "24/09/2022 15:00:00"
     const value = timestamp.split('T');
     const date = value[0].split('-');
-    const time = value[1].slice(0, 8);
+    const time = value[1].slice(0, 5);
     const year = date[0];
     const month = date[1];
     const day = date[2];
-    return ""+day+"/"+month+"/"+year+" "+time;
+    return ""+year+"-"+month+"-"+day+"T"+time;
   }
 
   clearPad() {

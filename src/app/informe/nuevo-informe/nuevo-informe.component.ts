@@ -37,7 +37,11 @@ export class NuevoInformeComponent implements OnInit{
   recibe: string = '';
   recibeCargo: string = '';
   firma: string = '';
+  servicioDetalleList: string[] = [];
+  servicioDetalleInput: string = '';
   servicioDetalle: string = '';
+  observacionesList: string[] = [];
+  observacionesInput: string = '';
   observaciones: string = '';
 
   constructor(
@@ -47,6 +51,18 @@ export class NuevoInformeComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
+  }
+
+  addDetalle(): void{
+    this.servicioDetalleList.push(this.servicioDetalleInput);
+    this.servicioDetalle = `${this.servicioDetalle}${this.servicioDetalleInput};`;
+    this.servicioDetalleInput = '';
+  }
+
+  addObservacion():void {
+    this.observacionesList.push(this.observacionesInput);
+    this.observaciones = `${this.observaciones}${this.observacionesInput};`;
+    this.observacionesInput = '';
   }
 
   onCreate(): void {
@@ -76,8 +92,8 @@ export class NuevoInformeComponent implements OnInit{
       this.recibe,
       this.recibeCargo,
       this.firma,
-      this.servicioDetalle,
-      this.observaciones
+      this.servicioDetalle.slice(0, -1),
+      this.observaciones.slice(0, -1)
     );
     informe.fechaRecibe = this.fechaRecibe;
 

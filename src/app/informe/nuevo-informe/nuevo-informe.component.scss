@@ -240,7 +240,34 @@ input, textarea {
           .--info-description {
             margin: 0;
             width: 100%;
-            padding: .2em 0 .2em 2em;
+            padding: .2em 1em ;
+
+            &.--input-section {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: space-between;
+              padding-left: 1em;
+
+              input[type="text"] {
+                background-color: transparent;
+
+                &:focus{
+                  background-color: transparent;
+                }
+              }
+              .--add-btn {
+                background-color: transparent;
+                border: none;
+                margin: 0;
+
+                &:hover {
+                  color: darkgreen;
+                }
+              }
+
+            }
+
           }
         }
 
@@ -284,6 +311,11 @@ input, textarea {
             border-radius: 0 1em 1em 0;
             width: 60%;
             padding: .2em .5em .2em 1em;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
 
             &:focus {
               outline: none;
@@ -291,7 +323,42 @@ input, textarea {
             }
           }
 
-          .--info-description, input {
+          .--info-description, input[type="datetime-local"] {
+            margin: 0;
+            background-color: transparent;
+            border: none;
+            border-radius: 0 1em 1em 0;
+            width: 60%;
+            padding: .2em 0 .2em 1em;
+            margin-right: -1em;
+
+            &:focus {
+              outline: none;
+              border: 2px solid cornflowerblue;
+            }
+          }
+
+          .--info-description, input[type="datetime-local"]::-webkit-calendar-picker-indicator{
+            position: absolute;
+            right: 2%;
+          }
+
+          .--info-description, input[type="text"] {
+            margin: 0;
+            background-color: transparent;
+            border: none;
+            border-radius: 0 1em 1em 0;
+            width: 60%;
+            padding: .2em 0 .2em 1em;
+
+            &:focus {
+              outline: none;
+              border: 2px solid cornflowerblue;
+            }
+
+          }
+
+          .--info-description, input[type="number"] {
             margin: 0;
             background-color: transparent;
             border: none;
