@@ -18,8 +18,8 @@ const routes: Routes = [
   {path:'informe/:id/editar', component: EditarInformeComponent},
   {path:'informe/:id/firmar', component: FirmarInformeComponent},
   {path:'usuario', component: ListaUsuarioComponent},
-  {path:'usuario/:id', component: DetalleUsuarioComponent},
-  {path:'usuario/:id/editar', component: EditarUsuarioComponent},
+  {path:'usuario/:sub', component: DetalleUsuarioComponent},
+  {path:'usuario/:sub/editar', component: EditarUsuarioComponent},
   {path:'**', redirectTo: '', pathMatch:'full'}
 ];
 

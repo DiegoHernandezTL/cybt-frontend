@@ -4,7 +4,6 @@ import {GsiPayload} from "./models/gsi-payload";
 import {Usuario} from "./models/usuario";
 import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
-import {Observable} from "rxjs";
 import {CookieService} from "ngx-cookie-service";
 
 declare var google: any;

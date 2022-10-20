@@ -1,1 +1,92 @@
-<p>detalle-usuario works!</p>
+<div class="container mt-4 cybt-container">
+  <div class="cybt-box">
+    <div class="cybt-box-wrapper">
+      <button class="cybt-close-btn" routerLink="/usuario/">
+        <i class="fa-solid fa-circle-xmark fa-2xl"></i>
+      </button>
+
+      <div class="cybt-box-content">
+        <form class="cybt-box-content-section --service" (ngSubmit)="onEdit()" novalidate #f="ngForm" *ngIf="userCanAccess; else NoAccess">
+          <p class="--section-title"><b>DATOS DEL USUARIO</b></p>
+          <div class="--text-1-line --type">
+            <label class="--info-title" for="nombre">Nombre</label>
+            <input class="--info-description" name="nombre" id="nombre" [(ngModel)]="usuario.nombre" required [disabled]="!isEditing"/>
+          </div>
+          <div class="--text-1-line --type">
+            <label class="--info-title" for="apellido">Apellido</label>
+            <input class="--info-description" name="apellido" id="apellido" [(ngModel)]="usuario.apellido" required [disabled]="!isEditing"/>
+          </div>
+          <div class="--text-1-line --type">
+            <label class="--info-title" for="area">Area</label>
+            <input class="--info-description" name="area" id="area" [(ngModel)]="usuario.area" required [disabled]="!isEditing"/>
+          </div>
+          <div class="--text-1-line --type">
+            <label class="--info-title" for="cargo">Cargo</label>
+            <input class="--info-description" name="cargo" id="cargo" [(ngModel)]="usuario.cargo" required [disabled]="!isEditing"/>
+          </div>
+          <div class="--text-1-line --type">
+            <label class="--info-title" for="telefono">Teléfono</label>
+            <input class="--info-description" name="telefono" id="telefono" [(ngModel)]="usuario.telefono" required [disabled]="!isEditing"/>
+          </div>
+
+          <p class="--section-title" *ngIf="userRol === 'administrador' || userRol === 'desarrollador'"><b>DATOS INMUTABLES</b></p>
+          <div class="--text-1-line --type" *ngIf="userRol === 'administrador' || userRol === 'desarrollador'">
+            <label class="--info-title" for="sub">ID de cuenta</label>
+            <input class="--info-description" name="sub" id="sub" [(ngModel)]="usuario.sub" required disabled/>
+          </div>
+          <div class="--text-1-line --type" *ngIf="userRol === 'administrador' || userRol === 'desarrollador'">
+            <label class="--info-title" for="correo">Correo</label>
+            <input class="--info-description" name="correo" id="correo" [(ngModel)]="usuario.correo" required disabled/>
+          </div>
+
+
+          <p class="--section-title" *ngIf="userRol === 'administrador' || userRol === 'desarrollador'"><b>OPCIONES DE ADMINISTRADOR</b></p>
+          <div class="--text-1-line --type" *ngIf="userRol === 'administrador' || userRol === 'desarrollador'">
+            <label class="--info-title" for="rol">Rol</label>
+            <select class="--info-description" name="rol" id="rol" [(ngModel)]="usuario.rol" required [disabled]="!isEditing || userRol != 'administrador'">
+              <option value="{{usuario.rol}}" selected disabled hidden>{{usuario.rol}}</option>
+              <option value="administrador">Administrador</option>
+              <option value="desarrollador">Desarrollador</option>
+              <option value="miembro">Miembro</option>
+              <option value="invitado">Invitado</option>
+            </select>
+          </div>
+          <div class="--text-1-line --type" *ngIf="userRol === 'administrador' || userRol === 'desarrollador'">
+            <label class="--info-title" for="estado">Estado</label>
+            <select class="--info-description" name="estado" id="estado" [(ngModel)]="usuario.estado" required [disabled]="!isEditing || userRol != 'administrador'">
+              <option value="{{usuario.estado}}" selected disabled hidden>{{usuario.estado}}</option>
+              <option value="activo">Activo</option>
+              <option value="inactivo">Inactivo</option>
+              <option value="suspendido">Suspendido</option>
+            </select>
+          </div>
+
+          <div class="--section-buttons">
+            <button class="cybt-btn --submit-btn" type="submit" *ngIf="isEditing">
+              <i class="fa-solid fa-floppy-disk"></i>&nbsp;&nbsp;Guardar usuario
+            </button>
+            <button class="cybt-btn --cancel-btn" type="button" *ngIf="isEditing" (click)="cancelEdit()">
+              <i class="fa-solid fa-ban"></i>&nbsp;&nbsp;Cancelar
+            </button>
+            <button class="cybt-btn --delete-btn" type="button" *ngIf="!isEditing && userRol === 'administrador'" (click)="onDelete()">
+              <i class="fa-solid fa-trash"></i>&nbsp;&nbsp;Borrar usuario
+            </button>
+            <button class="cybt-btn --edit-btn" type="button" *ngIf="!isEditing" (click)="toggleEdit()">
+              <i class="fa-solid fa-pen-to-square"></i>&nbsp;&nbsp;Editar usuario
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+      <ng-template #NoAccess>
+        <div class="cybt-box-content">
+          <div class="cybt-box-content-section">
+            <p class="--section-title"><i class="fa-solid fa-triangle-exclamation fa-xl"></i>&nbsp;&nbsp;<b>No puedes acceder a este usuario.</b></p>
+          </div>
+        </div>
+      </ng-template>
+
+    </div>
+  </div>
+</div>

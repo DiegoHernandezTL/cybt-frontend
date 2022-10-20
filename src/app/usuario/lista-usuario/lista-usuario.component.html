@@ -1,1 +1,88 @@
-<p>lista-usuario works!</p>
+
+<div class="cybt-container">
+  <div class="cybt-box">
+    <div class="cybt-box-title">
+      <p class="--main-title">
+        LISTADO DE USUARIOS
+      </p>
+    </div>
+    <div class="cybt-box-subtitle">
+      <div class="--search">
+        <button class="cybt-icon-button" (click)="toggleSearch()" *ngIf="!isSearch">
+          <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+        </button>
+        <button class="cybt-icon-button" (click)="toggleSearch()" *ngIf="isSearch">
+          <i class="fa-solid fa-circle-xmark fa-xl"></i>
+        </button>
+        <form
+          class="--bsq-form"
+          (ngSubmit)="buscar()"
+          novalidate #bsq="ngForm"
+          *ngIf="isSearch"
+        >
+          <select class="--form-input" name="bsqColumna" id=bsqColumna [(ngModel)]="bsqColumna">
+            <option value="" selected disabled hidden>Categoría</option>
+            <option value="nombre">Nombre</option>
+            <option value="area">Area</option>
+            <option value="cargo">Cargo</option>
+            <option value="telefono">Telefono</option>
+            <option value="correo">Correo</option>
+            <option value="rol">Rol</option>
+            <option value="estado">Estado</option>
+          </select>
+          <input class="--form-input" type="text" name="bsqValor" id="bsqValor" [(ngModel)]="bsqValor">
+          <button type="submit" class="cybt-icon-button"[disabled]="!bsq.valid">
+            <i class="fa-solid fa-magnifying-glass-arrow-right fa-lg"></i>
+          </button>
+        </form>
+
+      </div>
+    </div>
+    <div class="cybt-box-list">
+      <a class="--list-card" *ngFor="let usuario of usuariosMostrando" routerLink="/usuario/{{usuario.sub}}">
+        <div class="--card-icon-btn">
+          <button class="cybt-icon-btn" >
+            <i class="fa-solid fa-terminal fa-xl" *ngIf="usuario.rol === 'desarrollador'"></i>
+            <i class="fa-solid fa-network-wired fa-xl" *ngIf="usuario.rol === 'administrador'"></i>
+            <i class="fa-solid fa-user fa-xl" *ngIf="usuario.rol === 'miembro'"></i>
+            <i class="fa-regular fa-user fa-xl" *ngIf="usuario.rol === 'invitado'"></i>
+          </button>
+        </div>
+        <div class="--card-info --text-div">
+          <p class="--info-title">
+            {{usuario.nombre}} {{usuario.apellido}}
+          </p>
+          <p class="--info-subtitle">
+            {{usuario.rol}}
+          </p>
+        </div>
+        <div class="--card-area --text-div">
+          <p class="--info-title">
+            {{usuario.area}}
+          </p>
+          <p class="--info-subtitle">
+            {{usuario.cargo}}
+          </p>
+        </div>
+        <div class="--card-client --text-div">
+          <p class="--info-title">
+            {{usuario.correo}}
+          </p>
+          <p class="--info-subtitle">
+            {{usuario.telefono}}
+          </p>
+        </div>
+        <div class="--card-verified">
+          <i class="fa-solid fa-circle-check fa-xl --bg-green"></i>
+        </div>
+
+      </a>
+    </div>
+  </div>
+</div>
+
+<ng-template #nocontent>
+  <div class="container mt-3">
+    <h1>No hay contenido en las listas de informes</h1>
+  </div>
+</ng-template>

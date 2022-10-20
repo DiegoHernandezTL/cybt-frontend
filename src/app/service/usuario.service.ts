@@ -66,8 +66,8 @@ export class UsuarioService {
 
   // Eliminar
 
-  public eliminarId(id: number): Observable<any> {
-    return this.httpClient.delete<any>(this.usuarioURL + `delete/id/${id}`);
+  public eliminarSub(sub: string): Observable<any> {
+    return this.httpClient.delete<any>(this.usuarioURL + `delete/sub/${sub}`);
   }
 
   // Creacion
@@ -79,8 +79,8 @@ export class UsuarioService {
 
   // Actualizacion
 
-  public actualizar(id: number, usuario: Usuario): Observable<any>{
-    return this.httpClient.put<any>(this.usuarioURL + `update/id/${id}`, usuario);
+  public actualizar(sub: string, usuario: Usuario): Observable<any>{
+    return this.httpClient.put<any>(this.usuarioURL + `update/sub/${sub}`, usuario);
   }
 
   // Verificación
