@@ -1,7 +1,7 @@
 
 <div class="container mt-4 cybt-container">
   <div class="cybt-box">
-    <div class="cybt-box-wrapper">
+    <div class="cybt-box-wrapper" id="toExport">
       <button class="cybt-close-btn" routerLink="/informe/">
         <i class="fa-solid fa-circle-xmark fa-2xl"></i>
       </button>
@@ -194,8 +194,12 @@
             </div>
           </div>
         </div>
-        <div class="cybt-box-content-section --sign-button" >
-        </div>
+
+
+        <button class="btn btn-outline-success --sign-button" (click)="exportToPDF()">
+          <i class="fa-solid fa-signature"></i> Descargar
+        </button>
+
       </div>
     </div>
   </div>

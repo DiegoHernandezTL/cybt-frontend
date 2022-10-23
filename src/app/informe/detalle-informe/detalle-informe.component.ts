@@ -3,6 +3,8 @@ import {InformeTecnicoService} from "../../service/informe-tecnico.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 import {InformeTecnico} from "../../models/informe-tecnico";
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-detalle-informe',
@@ -70,6 +72,31 @@ export class DetalleInformeComponent implements OnInit {
       this.entregaFecha = fechaRecibe[0];
       this.entregaHora = fechaRecibe[1].slice(0, 8);
     }
+  }
+
+  exportToPDF(): void {
+    html2canvas(document.getElementById("toExport")).then(
+      canvas => {
+        const imgWidth = 208;
+        var pageHeight = 295;
+        const imgHeight = canvas.height * imgWidth / canvas.width;
+        var heightLeft = imgHeight;
+
+        const contentDataURL = canvas.toDataURL('image/png')
+        let pdf = new jsPDF('p', 'mm');
+        var position = 0;
+        pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight + 15);
+        heightLeft -= pageHeight;
+
+        while (heightLeft >= 0) {
+          position = heightLeft - imgHeight;
+          pdf.addPage();
+          pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight + 15);
+          heightLeft -= pageHeight;
+        }
+        pdf.save(`inftec-${this.informeTecnico.id}`);
+      }
+    );
   }
 
 }
