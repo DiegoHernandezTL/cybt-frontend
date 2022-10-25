@@ -40,7 +40,7 @@ export class ListaUsuarioComponent implements OnInit {
       data => {
         this.userLogged = data;
         this.userRol = data.rol;
-        if(this.userLogged.rol == 'administrador' || this.userRol == 'desarrollador') {
+        if(this.userLogged.rol == 'Administrador' || this.userRol == 'Desarrollador') {
           this.userCanAccess = true;
         } else {
           this.userCanAccess = false;

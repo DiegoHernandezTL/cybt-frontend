@@ -29,35 +29,35 @@
             <input class="--info-description" name="telefono" id="telefono" [(ngModel)]="usuario.telefono" required [disabled]="!isEditing"/>
           </div>
 
-          <p class="--section-title" *ngIf="userRol === 'administrador' || userRol === 'desarrollador'"><b>DATOS INMUTABLES</b></p>
-          <div class="--text-1-line --type" *ngIf="userRol === 'administrador' || userRol === 'desarrollador'">
+          <p class="--section-title" *ngIf="userRol === 'Administrador' || userRol === 'Desarrollador'"><b>DATOS INMUTABLES</b></p>
+          <div class="--text-1-line --type" *ngIf="userRol === 'Administrador' || userRol === 'Desarrollador'">
             <label class="--info-title" for="sub">ID de cuenta</label>
             <input class="--info-description" name="sub" id="sub" [(ngModel)]="usuario.sub" required disabled/>
           </div>
-          <div class="--text-1-line --type" *ngIf="userRol === 'administrador' || userRol === 'desarrollador'">
+          <div class="--text-1-line --type" *ngIf="userRol === 'Administrador' || userRol === 'Desarrollador'">
             <label class="--info-title" for="correo">Correo</label>
             <input class="--info-description" name="correo" id="correo" [(ngModel)]="usuario.correo" required disabled/>
           </div>
 
 
-          <p class="--section-title" *ngIf="userRol === 'administrador' || userRol === 'desarrollador'"><b>OPCIONES DE ADMINISTRADOR</b></p>
-          <div class="--text-1-line --type" *ngIf="userRol === 'administrador' || userRol === 'desarrollador'">
+          <p class="--section-title" *ngIf="userRol === 'Administrador' || userRol === 'Desarrollador'"><b>OPCIONES DE ADMINISTRADOR</b></p>
+          <div class="--text-1-line --type" *ngIf="userRol === 'Administrador' || userRol === 'Desarrollador'">
             <label class="--info-title" for="rol">Rol</label>
-            <select class="--info-description" name="rol" id="rol" [(ngModel)]="usuario.rol" required [disabled]="!isEditing || userRol != 'administrador'">
+            <select class="--info-description" name="rol" id="rol" [(ngModel)]="usuario.rol" required [disabled]="!isEditing || userRol != 'Administrador'">
               <option value="{{usuario.rol}}" selected disabled hidden>{{usuario.rol}}</option>
-              <option value="administrador">Administrador</option>
-              <option value="desarrollador">Desarrollador</option>
-              <option value="miembro">Miembro</option>
-              <option value="invitado">Invitado</option>
+              <option value="Administrador">Administrador</option>
+              <option value="Desarrollador">Desarrollador</option>
+              <option value="Miembro">Miembro</option>
+              <option value="Invitado">Invitado</option>
             </select>
           </div>
-          <div class="--text-1-line --type" *ngIf="userRol === 'administrador' || userRol === 'desarrollador'">
+          <div class="--text-1-line --type" *ngIf="userRol === 'Administrador' || userRol === 'Desarrollador'">
             <label class="--info-title" for="estado">Estado</label>
-            <select class="--info-description" name="estado" id="estado" [(ngModel)]="usuario.estado" required [disabled]="!isEditing || userRol != 'administrador'">
+            <select class="--info-description" name="estado" id="estado" [(ngModel)]="usuario.estado" required [disabled]="!isEditing || userRol != 'Administrador'">
               <option value="{{usuario.estado}}" selected disabled hidden>{{usuario.estado}}</option>
-              <option value="activo">Activo</option>
-              <option value="inactivo">Inactivo</option>
-              <option value="suspendido">Suspendido</option>
+              <option value="Activo">Activo</option>
+              <option value="Inactivo">Inactivo</option>
+              <option value="Suspendido">Suspendido</option>
             </select>
           </div>
 
@@ -68,7 +68,7 @@
             <button class="cybt-btn --cancel-btn" type="button" *ngIf="isEditing" (click)="cancelEdit()">
               <i class="fa-solid fa-ban"></i>&nbsp;&nbsp;Cancelar
             </button>
-            <button class="cybt-btn --delete-btn" type="button" *ngIf="!isEditing && userRol === 'administrador'" (click)="onDelete()">
+            <button class="cybt-btn --delete-btn" type="button" *ngIf="!isEditing && userRol === 'Administrador'" (click)="onDelete()">
               <i class="fa-solid fa-trash"></i>&nbsp;&nbsp;Borrar usuario
             </button>
             <button class="cybt-btn --edit-btn" type="button" *ngIf="!isEditing" (click)="toggleEdit()">

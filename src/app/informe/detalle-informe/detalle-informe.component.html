@@ -2,7 +2,7 @@
 <div class="container mt-4 cybt-container">
   <div class="cybt-box">
     <div class="cybt-box-wrapper" id="toExport">
-      <button class="cybt-close-btn" routerLink="/informe/">
+      <button class="cybt-close-btn" routerLink="/informe/" *ngIf="!isRendering">
         <i class="fa-solid fa-circle-xmark fa-2xl"></i>
       </button>
       <div class="cybt-box-header">
@@ -196,7 +196,7 @@
         </div>
 
 
-        <button class="btn btn-outline-success --sign-button" (click)="exportToPDF()">
+        <button class="btn btn-outline-success --sign-button" (click)="exportToPDF()" *ngIf="informeTecnico.firmaRecibe.length > 5 && !isRendering">
           <i class="fa-solid fa-signature"></i> Descargar
         </button>
 

@@ -42,10 +42,10 @@
       <a class="--list-card" *ngFor="let usuario of usuariosMostrando" routerLink="/usuario/{{usuario.sub}}">
         <div class="--card-icon-btn">
           <button class="cybt-icon-btn" >
-            <i class="fa-solid fa-terminal fa-xl" *ngIf="usuario.rol === 'desarrollador'"></i>
-            <i class="fa-solid fa-network-wired fa-xl" *ngIf="usuario.rol === 'administrador'"></i>
-            <i class="fa-solid fa-user fa-xl" *ngIf="usuario.rol === 'miembro'"></i>
-            <i class="fa-regular fa-user fa-xl" *ngIf="usuario.rol === 'invitado'"></i>
+            <i class="fa-solid fa-terminal fa-xl" *ngIf="usuario.rol === 'Desarrollador'"></i>
+            <i class="fa-solid fa-network-wired fa-xl" *ngIf="usuario.rol === 'Administrador'"></i>
+            <i class="fa-solid fa-user fa-xl" *ngIf="usuario.rol === 'Miembro'"></i>
+            <i class="fa-regular fa-user fa-xl" *ngIf="usuario.rol === 'Invitado'"></i>
           </button>
         </div>
         <div class="--card-info --text-div">

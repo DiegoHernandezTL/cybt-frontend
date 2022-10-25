@@ -59,7 +59,7 @@ export class DetalleUsuarioComponent implements OnInit {
       data => {
         this.userLogged = data;
         this.userRol = data.rol;
-        if(this.userLogged.rol == 'administrador' || this.userRol == 'desarrollador') {
+        if(this.userLogged.rol == 'Administrador' || this.userRol == 'Desarrollador') {
           this.userCanAccess = true;
         } else if(this.userLogged.sub == this.usuario.sub) {
           this.userCanAccess = true;

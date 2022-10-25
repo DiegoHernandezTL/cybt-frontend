@@ -31,7 +31,7 @@ export class NavbarComponent implements OnInit {
       nombre: "Usuarios",
       descripcion: "Gestionar usuarios",
       path: "/usuario",
-      access: ["administrador", "desarrollador"]
+      access: ["Administrador", "Desarrollador"]
     }
   ]
 
@@ -45,7 +45,7 @@ export class NavbarComponent implements OnInit {
   }
 
   reloadContent() {
-    this.cookieService.delete('user-sub');
+    this.cookieService.deleteAll('user-sub');
     this.cookieService.set('user-sub', 'default');
     window.location.reload();
   }

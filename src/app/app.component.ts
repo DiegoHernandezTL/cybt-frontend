@@ -120,7 +120,7 @@ export class AppComponent implements OnInit, AfterViewInit{
       data => {
         // Si existe, va a cargarlo en una variable local, cambia el switch de loggedin a verdadero y recarga el componente
         this.userLogged = data;
-        this.cookieService.delete('user-sub');
+        this.cookieService.deleteAll('user-sub');
         this.cookieService.set('user-sub', this.userLogged.sub);
         this.isLoggedin = true;
         window.location.reload();

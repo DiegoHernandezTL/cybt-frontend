@@ -23,6 +23,7 @@ export class DetalleInformeComponent implements OnInit {
   observaciones: string[] = [];
   logo: string = 'assets/images/cybertronica.png';
   firma: string = 'assets/images/firma.png';
+  isRendering: boolean = false;
 
   constructor(
     private informeTecnicoService: InformeTecnicoService,
@@ -82,18 +83,18 @@ export class DetalleInformeComponent implements OnInit {
         const imgHeight = canvas.height * imgWidth / canvas.width;
         var heightLeft = imgHeight;
 
-        const contentDataURL = canvas.toDataURL('image/png')
-        let pdf = new jsPDF('p', 'mm');
+        const contentDataURL = canvas.toDataURL('image/png');
+        let pdf = new jsPDF('p', 'mm', [imgWidth, imgHeight]);
         var position = 0;
         pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight + 15);
-        heightLeft -= pageHeight;
-
-        while (heightLeft >= 0) {
-          position = heightLeft - imgHeight;
-          pdf.addPage();
-          pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight + 15);
-          heightLeft -= pageHeight;
-        }
+        // heightLeft -= pageHeight;
+        //
+        // while (heightLeft >= 0) {
+        //   position = heightLeft - imgHeight;
+        //   pdf.addPage();
+        //   pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight + 15);
+        //   heightLeft -= pageHeight;
+        // }
         pdf.save(`inftec-${this.informeTecnico.id}`);
       }
     );
