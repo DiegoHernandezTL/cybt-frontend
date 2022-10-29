@@ -9,7 +9,7 @@ import {GsiPayload} from "../models/gsi-payload";
 })
 export class UsuarioService {
 
-  usuarioURL = "http://localhost:8080/user/";
+  usuarioURL = "http://10.147.17.75:32874/user/";
 
 
   constructor(

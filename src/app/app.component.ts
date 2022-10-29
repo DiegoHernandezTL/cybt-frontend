@@ -50,7 +50,7 @@ export class AppComponent implements OnInit, AfterViewInit{
     // if(this.cookieService.get('user-sub').length < 1) {
     //   this.cookieService.set('user-sub', 'default');
     // }
-    this.cookieService.set('user-sub', "117849144255272078549");
+    this.cookieService.set('user-sub', '117849144255272078549');
     if(this.cookieService.get('user-sub')!='default') {
       this.isLoggedin = true;
       this.usuarioService.detalleSub(this.cookieService.get('user-sub')).subscribe(
