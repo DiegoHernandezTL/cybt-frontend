@@ -8,7 +8,7 @@ import {InformeTecnico} from "../models/informe-tecnico";
 })
 export class InformeTecnicoService {
 
-  informeTecnicoURL = "http://10.147.17.75:32874/inftecnico/"
+  informeTecnicoURL = "http://localhost:8081/inftecnico/"
 
   constructor(
     private httpClient: HttpClient
