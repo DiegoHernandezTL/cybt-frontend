@@ -67,7 +67,8 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   login() {
     google.accounts.id.initialize({
-      client_id: "958249400302-g31g1r24rgi2vg39djd2nru6ou0iuhfo.apps.googleusercontent.com",
+      // client_id: "958249400302-g31g1r24rgi2vg39djd2nru6ou0iuhfo.apps.googleusercontent.com",
+      client_id: "392828834585-oe3fj2qq7qgis117paue9m6kftg2vlmm.apps.googleusercontent.com",
       callback: (response: any) => this.handleGoogleSingIn(response)
     });
     google.accounts.id.renderButton(
