@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="cybt-box-list">
-      <a class="--list-card" *ngFor="let informe of informes$ | async" routerLink="/informe/{{informe.id}}">
+      <a class="--list-card" *ngFor="let informe of informes$ | async" routerLink="/informe/{{informe.id}}" (click)="precargarInforme(informe.id)">
         <div class="--card-icon-btn">
           <button class="cybt-icon-btn" >
             <i class="fa-solid fa-computer fa-xl" *ngIf="informe.equipoTipo === 'Computador'"></i>
