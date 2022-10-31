@@ -27,6 +27,7 @@ import {CookieService} from "ngx-cookie-service";
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {informesReducer} from "./state/reducers/informe-tecnico.reducers";
+import {ROOT_REDUCERS} from "./state/app.state";
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import {informesReducer} from "./state/reducers/informe-tecnico.reducers";
     SignaturePadModule,
     ReactiveFormsModule,
     SocialLoginModule,
-    StoreModule.forRoot({informesTemporalReducer:informesReducer}, {}),
+    StoreModule.forRoot(ROOT_REDUCERS),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [
