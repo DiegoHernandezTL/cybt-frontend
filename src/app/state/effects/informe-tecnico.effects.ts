@@ -13,7 +13,7 @@ export class InformesEffects {
   ) {}
 
   // Carga de la lista de items
-  loadItems$ = createEffect(() => this.actions$.pipe(
+  loadInformes$ = createEffect(() => this.actions$.pipe(
     ofType('[Informes List] Load informes'),
     mergeMap(() => this.informeTecnicoService.lista().pipe(
       map(list => ({
@@ -23,5 +23,16 @@ export class InformesEffects {
       catchError(() => EMPTY)
     ))
   ));
+
+  loadInformeDetail$ = createEffect(() => this.actions$.pipe(
+    ofType('[Informes List] Load informe detail'),
+    mergeMap((id: number) => this.informeTecnicoService.detalleId(id).pipe(
+      map(detail => ({
+        type: '[Informes List] Loaded informe detail',
+        detail
+      })),
+      catchError(() => EMPTY)
+    ))
+  ))
 
 }

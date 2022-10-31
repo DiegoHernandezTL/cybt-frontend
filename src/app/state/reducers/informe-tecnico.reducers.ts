@@ -1,6 +1,11 @@
 import { createReducer, on } from "@ngrx/store";
 import {InformeTecnico} from "../../models/informe-tecnico";
-import {loadedInformes, loadInformes} from "../actions/informe-tecnico.actions";
+import {
+  loadedInformeDetail,
+  loadedInformes,
+  loadInformeDetail,
+  loadInformes
+} from "../actions/informe-tecnico.actions";
 import {InformesState} from "../../models/informes.state";
 
 // Estado inicial
@@ -8,7 +13,8 @@ import {InformesState} from "../../models/informes.state";
 export const initialState: InformesState = {
   loading: false,
   error: '',
-  list: []
+  list: [],
+  detail: null,
 }
 
 // Reducer -> Funciones
@@ -26,8 +32,23 @@ export const informesReducer = createReducer(
     return {
       ...state,
       loading: false,
-      list,
-      error: ''
+      error: '',
+      detail: null,
+      list
+    }
+  }),
+  on(loadInformeDetail, (state, {id}) => {
+    return {
+      ...state,
+      loading: true,
+    }
+  }),
+  on(loadedInformeDetail, (state, {detail}) => {
+    return {
+      ...state,
+      loading: false,
+      error: '',
+      detail
     }
   })
 );

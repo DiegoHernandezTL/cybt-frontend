@@ -1,7 +1,7 @@
 import { createAction, props } from "@ngrx/store";
 import {InformeTecnico} from "../../models/informe-tecnico";
 
-// Acciones de carga
+// Acciones de cargar lista de ifnormes
 
 export const loadInformes = createAction(
   '[Informes List] Load informes'
@@ -10,6 +10,18 @@ export const loadInformes = createAction(
 export const loadedInformes = createAction(
   '[Informes List] Loaded informes',
   props<{list: InformeTecnico[]}>()
+);
+
+// Cargar informe en concreto
+
+export const loadInformeDetail = createAction(
+  '[Informes List] Load informe detail',
+  props<{id: number}>()
+);
+
+export const loadedInformeDetail = createAction(
+  '[Informes List] Loaded informe detail',
+  props<{detail: InformeTecnico}>()
 );
 
 // Creación de informe

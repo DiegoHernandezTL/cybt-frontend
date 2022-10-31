@@ -13,6 +13,11 @@ export const selectListInformes = createSelector(
   (state: InformesState) => state.list
 );
 
+export const selectDetailInformes = createSelector(
+  selectInformesFeature,
+  (state: InformesState) => state.detail
+);
+
 export const selectLoadingInformes = createSelector(
   selectInformesFeature,
   (state: InformesState) => state.loading
