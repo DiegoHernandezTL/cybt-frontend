@@ -7,6 +7,7 @@ import {InformesState} from "../../models/informes.state";
 
 export const initialState: InformesState = {
   loading: false,
+  error: '',
   list: []
 }
 
