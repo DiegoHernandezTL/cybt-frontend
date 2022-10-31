@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import {InformeTecnico} from "../../models/informe-tecnico";
-import {loadInformes} from "../actions/informe-tecnico.actions";
+import {loadedInformes, loadInformes} from "../actions/informe-tecnico.actions";
 import {InformesState} from "../../models/informes.state";
 
 // Estado inicial
@@ -18,9 +18,18 @@ export const informesReducer = createReducer(
   on(loadInformes, (state) => {
     return {
       ...state,
-      loading: true
+      loading: true,
+      error: ''
     }
   }),
+  on(loadedInformes, (state, {list}) => {
+    return {
+      ...state,
+      loading: false,
+      list,
+      error: ''
+    }
+  })
 );
 
 

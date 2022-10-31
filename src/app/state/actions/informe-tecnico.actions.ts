@@ -9,7 +9,7 @@ export const loadInformes = createAction(
 
 export const loadedInformes = createAction(
   '[Informes List] Loaded informes',
-  props<{informes: InformeTecnico[]}>()
+  props<{list: InformeTecnico[]}>()
 );
 
 // Creación de informe
