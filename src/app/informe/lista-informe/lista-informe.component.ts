@@ -128,19 +128,8 @@ export class ListaInformeComponent implements OnInit {
     // );
     // TODO -> Pruebas de NGRX, eliminar al finalizar
     // Acá se probará si los items cargan manejando el estado
+    this.loading$ = this.store.select(selectLoadingInformes);
     this.store.dispatch(loadInformes());
-    this.informeTecnicoService.lista().subscribe(
-      data => {
-        this.store.dispatch(loadedInformes({list: data}));
-        this.informes = data;
-        if(!this.isSearch) {
-          this.informesMostrando = this.informes;
-        }
-      },
-      error => {
-        console.log(error);
-      }
-    );
   }
 
   borrar(id: number) {
