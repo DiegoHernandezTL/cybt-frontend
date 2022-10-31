@@ -3,6 +3,8 @@ import {InformeTecnico} from "../../models/informe-tecnico";
 import {InformeTecnicoService} from "../../service/informe-tecnico.service";
 import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
+import {Store} from "@ngrx/store";
+import {loadInformes} from "../../state/actions/informe-tecnico.actions";
 
 @Component({
   selector: 'app-lista-informe',
@@ -22,11 +24,14 @@ export class ListaInformeComponent implements OnInit {
   constructor(
     private informeTecnicoService: InformeTecnicoService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private store: Store<any>
   ) { }
 
   ngOnInit(): void {
     this.cargarInformes();
+    // TODO -> Pruebas de NGRX, eliminar al finalizar
+    this.store.dispatch(loadInformes());
   }
 
   toggleSearch(): void {
