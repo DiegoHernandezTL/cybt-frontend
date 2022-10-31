@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {InformeTecnico} from "../../models/informe-tecnico";
-import {InformeTecnicoService} from "../../service/informe-tecnico.service";
-import {ToastrService} from "ngx-toastr";
-import {Router} from "@angular/router";
 import {Store} from "@ngrx/store";
-import {loadedInformes, loadInformes} from "../../state/actions/informe-tecnico.actions";
+import {loadInformes} from "../../state/actions/informe-tecnico.actions";
 import {Observable} from "rxjs";
 import {selectListInformes, selectLoadingInformes} from "../../state/selectors/informe-tecnico.selectors";
 import {AppState} from "../../state/app.state";
@@ -16,30 +12,34 @@ import {AppState} from "../../state/app.state";
 })
 export class ListaInformeComponent implements OnInit {
 
+  /** TODO -> Reparar búsqueda, adaptándola a la programación reactiva
+  /* Se dejan de utilizar listas de informe al integrar NGRX pero queda inútil la búsqueda */
+  /*
   informes: InformeTecnico[] = [];
   informesMostrando: InformeTecnico[] = [];
   informesBusqueda: InformeTecnico[] = [];
+   */
+
+  // Parámetros de búsqueda
   bsqColumna: string = "";
   bsqValor: string = "";
   isSearch: boolean = false;
 
-  // TODO -> Pruebas de NGRX, eliminar al finalizar
+  // Observables de NGRX para manejador de estados y programación reactiva
   loading$: Observable<boolean> = new Observable();
   informes$: Observable<any> = new Observable();
 
 
   constructor(
-    private informeTecnicoService: InformeTecnicoService,
-    private toastr: ToastrService,
-    private router: Router,
     private store: Store<AppState>
   ) { }
 
   ngOnInit(): void {
-    this.cargarInformes();
-    // TODO -> Pruebas de NGRX, eliminar al finalizar
-    // this.loading$ = this.store.select(selectLoadingInformes);
-    // this.store.dispatch(loadInformes());
+    // Asignación de Observables desde Store
+    this.loading$ = this.store.select(selectLoadingInformes);
+    this.informes$ = this.store.select(selectListInformes);
+    // Cargar listado de informes
+    this.store.dispatch(loadInformes());
   }
 
   toggleSearch(): void {
@@ -47,7 +47,9 @@ export class ListaInformeComponent implements OnInit {
     this.ngOnInit();
   }
 
+  // TODO -> Reparar búsqueda, adaptándola a la programación reactiva
   buscar() {
+    /*
     this.informesBusqueda = [];
     switch (this.bsqColumna) {
       case 'cliente':
@@ -114,44 +116,7 @@ export class ListaInformeComponent implements OnInit {
     }
     this.informesMostrando = this.informesBusqueda;
     this.ngOnInit();
+     */
   }
-
-  cargarInformes(): void {
-    // TODO -> Código inactivo por pruebas, reactivar al finalizar
-    // this.informeTecnicoService.lista().subscribe(
-    //   data => {
-    //     this.informes = data;
-    //     if(!this.isSearch) {
-    //       this.informesMostrando = this.informes;
-    //     }
-    //   },
-    //   error => {
-    //     console.log(error);
-    //   }
-    // );
-    // TODO -> Pruebas de NGRX, eliminar al finalizar
-    // Acá se probará si los items cargan manejando el estado
-    this.loading$ = this.store.select(selectLoadingInformes);
-    this.informes$ = this.store.select(selectListInformes);
-    this.store.dispatch(loadInformes());
-  }
-
-  borrar(id: number) {
-    this.informeTecnicoService.eliminarId(id).subscribe(
-      data => {
-        this.toastr.success("Informe eliminado correctamente.", "OK", {
-          timeOut:3000, positionClass:'toast-top-center'
-        });
-        this.router.navigate(['/informe']);
-        this.cargarInformes()
-      },
-      err => {
-        this.toastr.error(err.error.mensaje, "Algo ha fallado", {
-          timeOut:3000, positionClass:'toast-top-center'
-        });
-      }
-    );
-  }
-
 
 }
