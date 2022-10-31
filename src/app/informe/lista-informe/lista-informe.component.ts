@@ -5,6 +5,8 @@ import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
 import {Store} from "@ngrx/store";
 import {loadInformes} from "../../state/actions/informe-tecnico.actions";
+import {Observable} from "rxjs";
+import {selectLoadingInformes} from "../../state/selectors/informe-tecnico.selectors";
 
 @Component({
   selector: 'app-lista-informe',
@@ -20,6 +22,8 @@ export class ListaInformeComponent implements OnInit {
   bsqValor: string = "";
   isSearch: boolean = false;
 
+  // TODO -> Pruebas de NGRX, eliminar al finalizar
+  loading$: Observable<boolean> = new Observable();
 
   constructor(
     private informeTecnicoService: InformeTecnicoService,
@@ -31,6 +35,7 @@ export class ListaInformeComponent implements OnInit {
   ngOnInit(): void {
     this.cargarInformes();
     // TODO -> Pruebas de NGRX, eliminar al finalizar
+    this.loading$ = this.store.select(selectLoadingInformes);
     this.store.dispatch(loadInformes());
   }
 
