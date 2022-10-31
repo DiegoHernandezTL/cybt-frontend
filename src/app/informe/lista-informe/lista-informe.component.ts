@@ -6,7 +6,8 @@ import {Router} from "@angular/router";
 import {Store} from "@ngrx/store";
 import {loadedInformes, loadInformes} from "../../state/actions/informe-tecnico.actions";
 import {Observable} from "rxjs";
-import {selectLoadingInformes} from "../../state/selectors/informe-tecnico.selectors";
+import {selectListInformes, selectLoadingInformes} from "../../state/selectors/informe-tecnico.selectors";
+import {AppState} from "../../state/app.state";
 
 @Component({
   selector: 'app-lista-informe',
@@ -24,12 +25,14 @@ export class ListaInformeComponent implements OnInit {
 
   // TODO -> Pruebas de NGRX, eliminar al finalizar
   loading$: Observable<boolean> = new Observable();
+  informes$: Observable<any> = new Observable();
+
 
   constructor(
     private informeTecnicoService: InformeTecnicoService,
     private toastr: ToastrService,
     private router: Router,
-    private store: Store<any>
+    private store: Store<AppState>
   ) { }
 
   ngOnInit(): void {
@@ -129,6 +132,7 @@ export class ListaInformeComponent implements OnInit {
     // TODO -> Pruebas de NGRX, eliminar al finalizar
     // Acá se probará si los items cargan manejando el estado
     this.loading$ = this.store.select(selectLoadingInformes);
+    this.informes$ = this.store.select(selectListInformes);
     this.store.dispatch(loadInformes());
   }
 
