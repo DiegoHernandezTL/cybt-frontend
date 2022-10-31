@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Store} from "@ngrx/store";
-import {loadInformes} from "../../state/actions/informe-tecnico.actions";
+import {loadedInformeDetail, loadInformeDetail, loadInformes} from "../../state/actions/informe-tecnico.actions";
 import {Observable} from "rxjs";
 import {selectListInformes, selectLoadingInformes} from "../../state/selectors/informe-tecnico.selectors";
 import {AppState} from "../../state/app.state";
@@ -117,6 +117,10 @@ export class ListaInformeComponent implements OnInit {
     this.informesMostrando = this.informesBusqueda;
     this.ngOnInit();
      */
+  }
+
+  precargarInforme(id: number) {
+    this.store.dispatch(loadInformeDetail({id}));
   }
 
 }
