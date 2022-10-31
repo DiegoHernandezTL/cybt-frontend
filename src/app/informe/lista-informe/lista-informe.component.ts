@@ -4,7 +4,7 @@ import {InformeTecnicoService} from "../../service/informe-tecnico.service";
 import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
 import {Store} from "@ngrx/store";
-import {loadInformes} from "../../state/actions/informe-tecnico.actions";
+import {loadedInformes, loadInformes} from "../../state/actions/informe-tecnico.actions";
 import {Observable} from "rxjs";
 import {selectLoadingInformes} from "../../state/selectors/informe-tecnico.selectors";
 
@@ -35,8 +35,8 @@ export class ListaInformeComponent implements OnInit {
   ngOnInit(): void {
     this.cargarInformes();
     // TODO -> Pruebas de NGRX, eliminar al finalizar
-    this.loading$ = this.store.select(selectLoadingInformes);
-    this.store.dispatch(loadInformes());
+    // this.loading$ = this.store.select(selectLoadingInformes);
+    // this.store.dispatch(loadInformes());
   }
 
   toggleSearch(): void {
@@ -114,8 +114,24 @@ export class ListaInformeComponent implements OnInit {
   }
 
   cargarInformes(): void {
+    // TODO -> Código inactivo por pruebas, reactivar al finalizar
+    // this.informeTecnicoService.lista().subscribe(
+    //   data => {
+    //     this.informes = data;
+    //     if(!this.isSearch) {
+    //       this.informesMostrando = this.informes;
+    //     }
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // );
+    // TODO -> Pruebas de NGRX, eliminar al finalizar
+    // Acá se probará si los items cargan manejando el estado
+    this.store.dispatch(loadInformes());
     this.informeTecnicoService.lista().subscribe(
       data => {
+        this.store.dispatch(loadedInformes({list: data}));
         this.informes = data;
         if(!this.isSearch) {
           this.informesMostrando = this.informes;
@@ -124,7 +140,7 @@ export class ListaInformeComponent implements OnInit {
       error => {
         console.log(error);
       }
-    )
+    );
   }
 
   borrar(id: number) {
