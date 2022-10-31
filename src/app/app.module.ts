@@ -24,6 +24,8 @@ import { DetalleUsuarioComponent } from './usuario/detalle-usuario/detalle-usuar
 import { ListaUsuarioComponent } from './usuario/lista-usuario/lista-usuario.component';
 import {environment} from "../environments/environment";
 import {CookieService} from "ngx-cookie-service";
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import {CookieService} from "ngx-cookie-service";
     SignaturePadModule,
     ReactiveFormsModule,
     SocialLoginModule,
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [
     {
