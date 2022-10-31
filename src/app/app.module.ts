@@ -28,6 +28,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {informesReducer} from "./state/reducers/informe-tecnico.reducers";
 import {ROOT_REDUCERS} from "./state/app.state";
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import {ROOT_REDUCERS} from "./state/app.state";
     SocialLoginModule,
     StoreModule.forRoot(ROOT_REDUCERS),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     {
