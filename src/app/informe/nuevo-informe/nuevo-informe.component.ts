@@ -13,6 +13,7 @@ import {SignaturePad} from "angular2-signaturepad";
 export class NuevoInformeComponent implements OnInit{
 
   cliente: string = '';
+  responsable: string = '';
   tipo: number = 0;
   usuario: string = '';
   usuarioCargo: string = '';
@@ -23,6 +24,10 @@ export class NuevoInformeComponent implements OnInit{
   equipoNombre: string = '';
   equipoMarca: string = '';
   equipoSN: string = '';
+  officeVersion: string = '';
+  officeKEY: string = '';
+  windowsVersion: string = '';
+  windowsKEY: string = '';
   contadorHojas: number = 0;
   direccionIP: string = '';
   monitorNombre: string = '';
@@ -68,6 +73,7 @@ export class NuevoInformeComponent implements OnInit{
   onCreate(): void {
     const informe = new InformeTecnico(
       this.cliente,
+      this.responsable,
       this.tipo,
       this.usuario,
       this.usuarioCargo,
@@ -78,6 +84,10 @@ export class NuevoInformeComponent implements OnInit{
       this.equipoNombre,
       this.equipoMarca,
       this.equipoSN,
+      this.officeVersion,
+      this.officeKEY,
+      this.windowsVersion,
+      this.windowsKEY,
       this.contadorHojas,
       this.direccionIP,
       this.monitorNombre,

@@ -14,6 +14,7 @@ export class EditarInformeComponent implements OnInit {
 
   id: number;
   cliente: string;
+  responsable: string;
   tipo: number;
   usuario: string;
   usuarioCargo: string;
@@ -24,6 +25,10 @@ export class EditarInformeComponent implements OnInit {
   equipoNombre: string;
   equipoMarca: string;
   equipoSN: string;
+  officeVersion: string;
+  officeKEY: string;
+  windowsVersion: string;
+  windowsKEY: string;
   contadorHojas: number;
   direccionIP: string;
   monitorNombre: string;
@@ -53,6 +58,7 @@ export class EditarInformeComponent implements OnInit {
     this.informeTecnicoService.detalleId(this.id).subscribe(
       data => {
         this.cliente = data.cliente;
+        this.responsable = data.responsable;
         this.tipo = data.tipo;
         this.usuario = data.usuario;
         this.usuarioCargo = data.usuarioCargo;
@@ -63,6 +69,10 @@ export class EditarInformeComponent implements OnInit {
         this.equipoNombre = data.equipoNombre;
         this.equipoMarca = data.equipoMarca;
         this.equipoSN = data.equipoSN;
+        this.officeVersion = data.officeVersion;
+        this.officeKEY = data.officeKEY;
+        this.windowsVersion = data.windowsVersion;
+        this.windowsKEY = data.windowsKEY;
         this.contadorHojas = data.contadorHojas;
         this.direccionIP = data.direccionIP;
         this.monitorNombre = data.monitorNombre;
@@ -105,6 +115,7 @@ export class EditarInformeComponent implements OnInit {
     this.equipoTipo = this.equipoTipo.charAt(0).toUpperCase() + this.equipoTipo.slice(1).toLowerCase();
     const informe = new InformeTecnico(
       this.cliente,
+      this.responsable,
       this.tipo ,
       this.usuario,
       this.usuarioCargo,
@@ -115,6 +126,10 @@ export class EditarInformeComponent implements OnInit {
       this.equipoNombre,
       this.equipoMarca,
       this.equipoSN,
+      this.officeVersion,
+      this.officeKEY,
+      this.windowsVersion,
+      this.windowsKEY,
       this.contadorHojas,
       this.direccionIP,
       this.monitorNombre,

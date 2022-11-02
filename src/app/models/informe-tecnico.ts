@@ -2,6 +2,7 @@ export class InformeTecnico {
 
   id?: number;
   cliente: string;
+  responsable: string;
   tipo: number;
   usuario: string;
   usuarioCargo?: string;
@@ -12,6 +13,10 @@ export class InformeTecnico {
   equipoNombre?: string;
   equipoMarca?: string;
   equipoSN?: string;
+  officeVersion?: string;
+  officeKEY?: string;
+  windowsVersion?: string;
+  windowsKEY?: string;
   contadorHojas?: number;
   direccionIP?: string;
   monitorNombre?: string;
@@ -31,6 +36,7 @@ export class InformeTecnico {
 
   constructor(
     cliente: string,
+    responsable: string,
     tipo: number,
     usuario: string,
     usuarioCargo: string,
@@ -41,6 +47,10 @@ export class InformeTecnico {
     equipoNombre: string,
     equipoMarca: string,
     equipoSN: string,
+    officeVersion: string,
+    officeKEY: string,
+    windowsVersion: string,
+    windowsKEY: string,
     contadorHojas: number,
     direccionIP: string,
     monitorNombre: string,
@@ -59,6 +69,7 @@ export class InformeTecnico {
     observaciones: string
   ) {
     this.cliente = cliente;
+    this.responsable = responsable;
     this.tipo = tipo;
     this.usuario = usuario;
     this.usuarioCargo = usuarioCargo;
@@ -69,6 +80,10 @@ export class InformeTecnico {
     this.equipoNombre = equipoNombre;
     this.equipoMarca = equipoMarca;
     this.equipoSN = equipoSN;
+    this.officeVersion = officeVersion;
+    this.officeKEY = officeKEY;
+    this.windowsVersion = windowsVersion;
+    this.windowsKEY = windowsKEY;
     this.contadorHojas = contadorHojas;
     this.direccionIP = direccionIP;
     this.monitorNombre = monitorNombre;

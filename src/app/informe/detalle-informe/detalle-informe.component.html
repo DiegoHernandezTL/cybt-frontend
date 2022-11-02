@@ -98,6 +98,22 @@
             <p class="--info-title">Dirección IP</p>
             <p class="--info-description">{{informeTecnico.direccionIP}}</p>
           </div>
+          <div class="--text-1-line --type" *ngIf="informeTecnico.officeVersion != '' && informeTecnico.officeVersion != null">
+            <p class="--info-title">Microsoft Office</p>
+            <p class="--info-description">{{informeTecnico.officeVersion}}</p>
+          </div>
+          <div class="--text-1-line --type" *ngIf="informeTecnico.officeVersion != '' && informeTecnico.officeVersion != null">
+            <p class="--info-title">KEY</p>
+            <p class="--info-description">{{informeTecnico.officeKEY}}</p>
+          </div>
+          <div class="--text-1-line --type" *ngIf="informeTecnico.windowsVersion != '' && informeTecnico.windowsVersion != null">
+            <p class="--info-title">Microsoft Windows</p>
+            <p class="--info-description">{{informeTecnico.windowsVersion}}</p>
+          </div>
+          <div class="--text-1-line --type" *ngIf="informeTecnico.windowsVersion != '' && informeTecnico.windowsVersion != null">
+            <p class="--info-title">KEY</p>
+            <p class="--info-description">{{informeTecnico.windowsKEY}}</p>
+          </div>
         </div>
         <div class="cybt-box-content-section --computer-details" *ngIf="informeTecnico.equipoTipo == 'Computador'">
           <p class="--section-title"><b>DATOS DE MONITOR</b></p>
@@ -188,8 +204,8 @@
               <p class="--sign-details">{{informeTecnico.recibeCargo}} de {{informeTecnico.cliente}}</p>
             </div>
             <div class="--sign-box">
-              <img class="--sign-img" [src]="firma" alt="">
-              <p class="--sign-details">Oscar Espitia</p>
+              <img class="--sign-img" [src]="sign" alt="">
+              <p class="--sign-details">{{informeTecnico.responsable}}</p>
               <p class="--sign-details">Cybertronica OE LTDA</p>
             </div>
           </div>
