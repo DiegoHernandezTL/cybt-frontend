@@ -15,6 +15,8 @@ export class InformeTecnico {
   equipoSN?: string;
   officeVersion?: string;
   officeKEY?: string;
+  windowsVersion?: string;
+  windowsKEY?: string;
   contadorHojas?: number;
   direccionIP?: string;
   monitorNombre?: string;
@@ -47,6 +49,8 @@ export class InformeTecnico {
     equipoSN: string,
     officeVersion: string,
     officeKEY: string,
+    windowsVersion: string,
+    windowsKEY: string,
     contadorHojas: number,
     direccionIP: string,
     monitorNombre: string,
@@ -78,6 +82,8 @@ export class InformeTecnico {
     this.equipoSN = equipoSN;
     this.officeVersion = officeVersion;
     this.officeKEY = officeKEY;
+    this.windowsVersion = windowsVersion;
+    this.windowsKEY = windowsKEY;
     this.contadorHojas = contadorHojas;
     this.direccionIP = direccionIP;
     this.monitorNombre = monitorNombre;

@@ -26,6 +26,8 @@ export class NuevoInformeComponent implements OnInit{
   equipoSN: string = '';
   officeVersion: string = '';
   officeKEY: string = '';
+  windowsVersion: string = '';
+  windowsKEY: string = '';
   contadorHojas: number = 0;
   direccionIP: string = '';
   monitorNombre: string = '';
@@ -84,6 +86,8 @@ export class NuevoInformeComponent implements OnInit{
       this.equipoSN,
       this.officeVersion,
       this.officeKEY,
+      this.windowsVersion,
+      this.windowsKEY,
       this.contadorHojas,
       this.direccionIP,
       this.monitorNombre,
