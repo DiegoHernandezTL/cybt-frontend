@@ -27,7 +27,7 @@
             </select>
           </div>
           <div class="--text-1-line --responsible">
-            <label for="equipoTipo" class="--info-title">Técnico responsable</label>
+            <label for="responsable" class="--info-title">Técnico responsable</label>
             <select class="--info-description" type="text" class="form-contol" id="responsable" name="responsable" [(ngModel)]="responsable" required>
               <option value="" selected hidden disabled>Seleccione técnico responsable</option>
               <option value="Oscar Espitia">Oscar Espitia</option>
@@ -76,12 +76,31 @@
             <label for="direccionIP" class="--info-title">Dirección IP</label>
             <input class="--info-description" type="text" class="form-contol" id="direccionIP" name="direccionIP" [(ngModel)]="direccionIP">
           </div>
+<!--          Si el equipo es una impresora, pedirá contador de hojas-->
           <div class="--text-1-line --type" *ngIf="equipoTipo == 'Impresora'">
             <label for="contadorHojas" class="--info-title">Contador de hojas</label>
             <input class="--info-description" type="number" class="form-contol" id="contadorHojas" name="contadorHojas" [(ngModel)]="contadorHojas">
           </div>
+<!--          Si el equipo es un computador, pedirá office versión y llave (Son datos opcionales)-->
+          <div class="--text-1-line --type">
+            <label for="officeVersion" class="--info-title">Técnico responsable</label>
+            <select class="--info-description" type="text" class="form-contol" id="officeVersion" name="officeVersion" [(ngModel)]="officeVersion" required>
+              <option value="" selected hidden disabled>Si tiene Office, seleccione la versión</option>
+              <option value="2007 x32 bits">2007 x32 bits</option>
+              <option value="2007 x64 bits">2007 x64 bits</option>
+              <option value="2010 x32 bits">2010 x32 bits</option>
+              <option value="2010 x64 bits">2010 x64 bits</option>
+              <option value="2013 x32 bits">2013 x32 bits</option>
+              <option value="2013 x64 bits">2013 x64 bits</option>
+              <option value="2016 x32 bits">2016 x32 bits</option>
+              <option value="2016 x64 bits">2016 x64 bits</option>
+            </select>
+          </div>
+          <div class="--text-1-line --type" *ngIf="equipoTipo == 'Computador' && officeVersion != ''">
+            <label for="officeKEY" class="--info-title">Office KEY</label>
+            <input class="--info-description" type="number" class="form-contol" id="officeKEY" name="officeKEY" [(ngModel)]="officeKEY">
+          </div>
         </div>
-
         <div class="cybt-box-content-section --computer-details" *ngIf="equipoTipo == 'Computador'">
           <p class="--section-title"><b>DATOS DE MONITOR</b></p>
           <div class="--text-1-line --type">
