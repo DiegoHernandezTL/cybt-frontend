@@ -26,6 +26,14 @@
               <option value="Impresora">Impresora</option>
             </select>
           </div>
+          <div class="--text-1-line --responsible">
+            <label for="equipoTipo" class="--info-title">Técnico responsable</label>
+            <select class="--info-description" type="text" class="form-contol" id="responsable" name="responsable" [(ngModel)]="responsable" required>
+              <option value="" selected hidden disabled>Seleccione técnico responsable</option>
+              <option value="Oscar Espitia">Oscar Espitia</option>
+              <option value="Oscar Riveros">Oscar Riveros</option>
+            </select>
+          </div>
           <div class="--text-1-line --type">
             <label for="fechaRetiro" class="--info-title">Fecha de retiro</label>
             <input class="--info-description" type="datetime-local" class="form-contol" id="fechaRetiro" name="fechaRetiro" [(ngModel)]="fechaRetiro" required>
