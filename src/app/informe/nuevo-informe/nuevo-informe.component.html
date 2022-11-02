@@ -81,11 +81,12 @@
             <label for="contadorHojas" class="--info-title">Contador de hojas</label>
             <input class="--info-description" type="number" class="form-contol" id="contadorHojas" name="contadorHojas" [(ngModel)]="contadorHojas">
           </div>
-<!--          Si el equipo es un computador, pedirá office versión y llave (Son datos opcionales)-->
+<!--          Si el equipo es un computador, pedirá office versión y llave -->
           <div class="--text-1-line --type">
-            <label for="officeVersion" class="--info-title">Técnico responsable</label>
+            <label for="officeVersion" class="--info-title">Microsoft Office</label>
             <select class="--info-description" type="text" class="form-contol" id="officeVersion" name="officeVersion" [(ngModel)]="officeVersion" required>
-              <option value="" selected hidden disabled>Si tiene Office, seleccione la versión</option>
+              <option value="" selected hidden disabled>Seleccionar versión</option>
+              <option value="">Sin licencia activa</option>
               <option value="2007 x32 bits">2007 x32 bits</option>
               <option value="2007 x64 bits">2007 x64 bits</option>
               <option value="2010 x32 bits">2010 x32 bits</option>
@@ -99,6 +100,28 @@
           <div class="--text-1-line --type" *ngIf="equipoTipo == 'Computador' && officeVersion != ''">
             <label for="officeKEY" class="--info-title">Office KEY</label>
             <input class="--info-description" type="text" class="form-contol" id="officeKEY" name="officeKEY" [(ngModel)]="officeKEY">
+          </div>
+<!--          Si el equipo es un computador, pedirá windows versión y llave-->
+          <div class="--text-1-line --type">
+            <label for="windowsVersion" class="--info-title">Microsoft Windows</label>
+            <select class="--info-description" type="text" class="form-contol" id="windowsVersion" name="windowsVersion" [(ngModel)]="windowsVersion" required>
+              <option value="" selected hidden disabled>Seleccionar versión</option>
+              <option value="">Sin licencia activa</option>
+              <option value="Windows 7 Pro x32 bits">Windows 7 Pro x32 bits</option>
+              <option value="Windows 7 Pro x64 bits">Windows 7 Pro x64 bits</option>
+              <option value="Windows 8 Pro x32 bits">Windows 8 Pro x32 bits</option>
+              <option value="Windows 8 Pro x64 bits">Windows 8 Pro x64 bits</option>
+              <option value="Windows 8.1 Pro x32 bits">Windows 8.1 Pro x32 bits</option>
+              <option value="Windows 8.1 Pro x64 bits">Windows 8.1 Pro x64 bits</option>
+              <option value="Windows 10 Pro x32 bits">Windows 10 Pro x32 bits</option>
+              <option value="Windows 10 Pro x64 bits">Windows 10 Pro x64 bits</option>
+              <option value="Windows 11 Pro x32 bits">Windows 11 Pro x32 bits</option>
+              <option value="Windows 11 Pro x64 bits">Windows 11 Pro x64 bits</option>
+            </select>
+          </div>
+          <div class="--text-1-line --type" *ngIf="equipoTipo == 'Computador' && windowsVersion != ''">
+            <label for="windowsKEY" class="--info-title">Windows KEY</label>
+            <input class="--info-description" type="text" class="form-contol" id="windowsKEY" name="windowsKEY" [(ngModel)]="windowsKEY">
           </div>
         </div>
         <div class="cybt-box-content-section --computer-details" *ngIf="equipoTipo == 'Computador'">
